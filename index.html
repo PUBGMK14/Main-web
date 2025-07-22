@@ -256,13 +256,14 @@
       }
     }
     
-    /* 버튼 컨테이너 */
+    /* 버튼 컨테이너 - 자동으로 크기 조정 */
     .buttons-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
-      max-width: 700px;
+      max-width: 1200px;
       width: 100%;
+      padding: 0 20px;
     }
     
     .pubg-button {
@@ -347,11 +348,24 @@
         0 0 30px rgba(255, 204, 0, 0.4);
     }
     
-    /* 버튼 아이콘 */
+    /* 버튼 아이콘 - 쉽게 추가 가능 */
     .btn-ios::after { content: ' ⚡ iOS'; font-size: 14px; display: block; margin-top: 5px; }
     .btn-aos::after { content: ' 🔥 ANDROID'; font-size: 14px; display: block; margin-top: 5px; }
     .btn-calc::after { content: ' 🎯 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
     .btn-tiktok::after { content: ' 📺 FOLLOW'; font-size: 14px; display: block; margin-top: 5px; }
+    
+    /* 새 버튼을 추가하려면 여기에 추가하세요:
+    .btn-새이름::after { content: ' 🎮 설명'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-가이드::after { content: ' 📖 GUIDE'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-뉴스::after { content: ' 📰 NEWS'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-업데이트::after { content: ' 🔄 UPDATE'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-커뮤니티::after { content: ' 👥 COMMUNITY'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-랭킹::after { content: ' 🏆 RANKING'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-통계::after { content: ' 📊 STATS'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-맵::after { content: ' 🗺️ MAPS'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-무기::after { content: ' 🔫 WEAPONS'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-팁::after { content: ' 💡 TIPS'; font-size: 14px; display: block; margin-top: 5px; }
+    */
     
     /* 코너 UI 요소들 */
     .corner-ui {
@@ -384,16 +398,15 @@
     
     /* 반응형 */
     @media (max-width: 768px) {
-  .radar-container {
-    width: 250px;           /* 200px → 250px */
-    height: 250px;          /* 200px → 250px */
-    top: -60px;             /* -70px → -60px */
-  }
-}
+      .logo-title {
+        font-size: 48px;
+        letter-spacing: 6px;
+      }
       
       .buttons-container {
         grid-template-columns: 1fr;
         gap: 20px;
+        padding: 0 10px;
       }
       
       .pubg-button {
@@ -402,9 +415,9 @@
       }
       
       .radar-container {
-        width: 200px;
-        height: 200px;
-        top: -70px;
+        width: 250px;
+        height: 250px;
+        top: -60px;
       }
       
       .radar-sweep {
@@ -436,9 +449,9 @@
 <body>
   <!-- UI 요소들 -->
   <div class="corner-ui top-left">◤ STATUS: ONLINE</div>
-  <div class="corner-ui top-right">SERVERS: KR/JP ◥</div>
-  <div class="corner-ui bottom-left">◣ v1.0.1</div>
-  <div class="corner-ui bottom-right">PING: 20ms ◢</div>
+  <div class="corner-ui top-right">SERVERS: ACTIVE ◥</div>
+  <div class="corner-ui bottom-left">◣ v2.0.1</div>
+  <div class="corner-ui bottom-right">PING: 25ms ◢</div>
   
   <div class="warning-banner">⚠ BATTLEGROUND ACCESS PORTAL ⚠</div>
   
@@ -457,7 +470,7 @@
     <div class="buttons-container">
       <a class="pubg-button btn-ios load-in" href="http://pubgmk14-ios.kro.kr">iOS SITE</a>
       <a class="pubg-button btn-aos load-in" href="http://pubgmk14-aos.kro.kr">AOS SITE</a>
-      <a class="pubg-button btn-aos load-in" href="http://pubgmk14-probability.kro.kr">PROBABILITY</a>
+      <div class="pubg-button btn-calc load-in" onclick="window.open('http://pubgmk14-probability.kro.kr', '_blank')">PROBABILITY</div>
       <a class="pubg-button btn-tiktok load-in" href="https://www.tiktok.com/@pubginfo_kr?_t=ZS-8yDPN1MIZdJ&_r=1">TIKTOK</a>
     </div>
   </div>
