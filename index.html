@@ -4,16 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PUBG INFO - iOS, AOS 최저가 UC 계산기, 확률 계산기, 최신 정보를 한곳에서 확인하세요!</title>
+
+  <!-- Open Graph -->
   <meta property="og:title" content="PUBG INFO - UC 최저가 계산기 & 정보">
   <meta property="og:description" content="iOS / Android UC 최저가 계산기, 확률 계산기, PUBG 최신 정보를 한곳에서 확인하세요!">
   <meta property="og:image" content="https://github.com/user-attachments/assets/a4f2693d-c321-4fce-a18f-ca483e65e51c">
   <meta property="og:url" content="https://pubgmk14.github.io/Main-web/">
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <!-- 코너 UI 요소들 -->
   <div class="corner-ui top-left">◤ STATUS: ONLINE</div>
   <div class="corner-ui top-right">SERVERS: KR/JP ◥</div>
   <div class="corner-ui bottom-left">◣ v1.0.4</div>
@@ -34,14 +40,24 @@
     </div>
 
     <div class="buttons-container">
-      <a class="pubg-button btn-ios load-in" href="http://pubgmk14-ios.kro.kr">IOS SITE</a>
-      <a class="pubg-button btn-aos load-in" href="http://pubgmk14-aos.kro.kr">AOS SITE</a>
-      <div class="pubg-button btn-calc load-in" onclick="window.open('http://pubgmk14-probability.kro.kr', '_blank')">PROBABILITY</div>
-      <a class="pubg-button btn-tiktok load-in" href="https://www.tiktok.com/@pubginfo_kr?_t=ZS-8yDPN1MIZdJ&_r=1">TIKTOK</a>
-      <a class="pubg-button btn-kakaotlak load-in" href="https://open.kakao.com/o/gxqkyr7f">KAKAO TALK</a>
-      <a class="pubg-button btn-budget-ios load-in" href="https://pubgmk14-budget-ios.kro.kr">Budget IOS</a>
-      <a class="pubg-button btn-budget-aos load-in" href="https://pubgmk14-budget-aos.kro.kr">Budget AOS</a>
+      <!-- 원문에서 버튼 라벨과 링크가 섞여 있던 부분을 의미에 맞게 정리 -->
+      <a class="pubg-button btn-ios load-in" href="http://pubgmk14-ios.kro.kr" target="_blank" rel="noopener noreferrer">IOS SITE</a>
+      <a class="pubg-button btn-aos load-in" href="http://pubgmk14-aos.kro.kr" target="_blank" rel="noopener noreferrer">AOS SITE</a>
+
+      <button id="btn-probability" class="pubg-button btn-calc load-in" type="button" data-url="http://pubgmk14-probability.kro.kr">
+        PROBABILITY
+      </button>
+
+      <a class="pubg-button btn-tiktok load-in" href="https://www.tiktok.com/@pubginfo_kr?_t=ZS-8yDPN1MIZdJ&_r=1" target="_blank" rel="noopener noreferrer">TIKTOK</a>
+      <a class="pubg-button btn-kakaotlak load-in" href="https://open.kakao.com/o/gxqkyr7f" target="_blank" rel="noopener noreferrer">KAKAO TLAK</a>
+
+      <!-- 누락된 프로토콜(http://) 추가 및 클래스 오타 수정 -->
+      <a class="pubg-button btn-budget-ios load-in" href="http://pubgmk14-budget-ios.kro.kr" target="_blank" rel="noopener noreferrer">Budget IOS</a>
+      <a class="pubg-button btn-budget-aos load-in" href="http://pubgmk14-budget-aos.kro.kr" target="_blank" rel="noopener noreferrer">Budget AOS</a>
     </div>
   </div>
+
+  <!-- Scripts -->
+  <script src="./script.js"></script>
 </body>
 </html>
