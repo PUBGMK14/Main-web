@@ -28,7 +28,8 @@
   <div class="warning-banner">⚠ BATTLEGROUND ACCESS WEB ⚠</div>
 
   <div class="container">
-    <div class="logo-container load-in">
+    <!-- 메인 로고 -->
+    <div class="logo-container load-in" style="--i:0">
       <div class="radar-container">
         <div class="radar-ring"></div>
         <div class="radar-ring"></div>
@@ -39,21 +40,20 @@
       <p class="logo-subtitle">TACTICAL COMMAND CENTER</p>
     </div>
 
+    <!-- 버튼 영역 -->
     <div class="buttons-container">
-      <!-- 원문에서 버튼 라벨과 링크가 섞여 있던 부분을 의미에 맞게 정리 -->
-      <a class="pubg-button btn-ios load-in" href="http://pubgmk14-ios.kro.kr" target="_blank" rel="noopener noreferrer">IOS SITE</a>
-      <a class="pubg-button btn-aos load-in" href="http://pubgmk14-aos.kro.kr" target="_blank" rel="noopener noreferrer">AOS SITE</a>
+      <a class="pubg-button btn-ios load-in" style="--i:1" href="http://pubgmk14-ios.kro.kr" target="_blank" rel="noopener noreferrer">IOS SITE</a>
+      <a class="pubg-button btn-aos load-in" style="--i:2" href="http://pubgmk14-aos.kro.kr" target="_blank" rel="noopener noreferrer">AOS SITE</a>
+      <button id="btn-probability" class="pubg-button btn-calc load-in" style="--i:3" type="button" data-url="http://pubgmk14-probability.kro.kr">PROBABILITY</button>
+      <a class="pubg-button btn-tiktok load-in" style="--i:4" href="https://www.tiktok.com/@pubginfo_kr?_t=ZS-8yDPN1MIZdJ&_r=1" target="_blank" rel="noopener noreferrer">TIKTOK</a>
+      <a class="pubg-button btn-kakaotlak load-in" style="--i:5" href="https://open.kakao.com/o/gxqkyr7f" target="_blank" rel="noopener noreferrer">KAKAO TALK</a>
+      <a class="pubg-button btn-budget-ios load-in" style="--i:6" href="http://pubgmk14-budget-ios.kro.kr" target="_blank" rel="noopener noreferrer">Budget IOS</a>
+      <a class="pubg-button btn-budget-aos load-in" style="--i:7" href="http://pubgmk14-budget-aos.kro.kr" target="_blank" rel="noopener noreferrer">Budget AOS</a>
 
-      <button id="btn-probability" class="pubg-button btn-calc load-in" type="button" data-url="http://pubgmk14-probability.kro.kr">
-        PROBABILITY
-      </button>
-
-      <a class="pubg-button btn-tiktok load-in" href="https://www.tiktok.com/@pubginfo_kr?_t=ZS-8yDPN1MIZdJ&_r=1" target="_blank" rel="noopener noreferrer">TIKTOK</a>
-      <a class="pubg-button btn-kakaotlak load-in" href="https://open.kakao.com/o/gxqkyr7f" target="_blank" rel="noopener noreferrer">KAKAO TLAK</a>
-
-      <!-- 누락된 프로토콜(http://) 추가 및 클래스 오타 수정 -->
-      <a class="pubg-button btn-budget-ios load-in" href="http://pubgmk14-budget-ios.kro.kr" target="_blank" rel="noopener noreferrer">Budget IOS</a>
-      <a class="pubg-button btn-budget-aos load-in" href="http://pubgmk14-budget-aos.kro.kr" target="_blank" rel="noopener noreferrer">Budget AOS</a>
+      <!--
+        추가 버튼을 넣고 싶다면 아래처럼 추가 가능:
+        <a class="pubg-button btn-new load-in" style="--i:8" href="LINK" target="_blank">NEW BUTTON</a>
+      -->
     </div>
   </div>
 
