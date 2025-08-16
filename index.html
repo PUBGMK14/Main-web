@@ -371,12 +371,13 @@
     }
     
     /* 버튼 아이콘 - 쉽게 추가 가능 */
-    .btn-ios::after { content: ' ⚡ iOS'; font-size: 14px; display: block; margin-top: 5px; }
-    .btn-aos::after { content: ' 🔥 ANDROID'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-ios::after { content: ' ⚡ UC IOS'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-aos::after { content: ' 🔥 UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
     .btn-calc::after { content: ' 🎯 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
     .btn-tiktok::after { content: ' 📺 FOLLOW'; font-size: 14px; display: block; margin-top: 5px; }
     .btn-kakaotlak::after { content: '💬 KAKAO TLAK'; font-size: 14px; display: block; margin-top: 5px; }
-    
+    .btn-budget-ios::after { content: '💵 Budget IOS'; font-size: 14px; display: block; margin-top: 5px; }
+    .btn-budget-ios::after { content: '💴 Budget AOS'; font-size: 14px; display: block; margin-top: 5px; }
     
     /* 새 버튼을 추가하려면 여기에 추가하세요:
     .btn-새이름::after { content: ' 🎮 설명'; font-size: 14px; display: block; margin-top: 5px; }
@@ -474,8 +475,8 @@
   <!-- UI 요소들 -->
   <div class="corner-ui top-left">◤ STATUS: ONLINE</div>
   <div class="corner-ui top-right">SERVERS: KR/JP ◥</div>
-  <div class="corner-ui bottom-left">◣ v1.0.3</div>
-  <div class="corner-ui bottom-right">PING: 20ms ◢</div>
+  <div class="corner-ui bottom-left">◣ v1.0.4</div>
+  <div class="corner-ui bottom-right">PING: 28ms ◢</div>
   
   <div class="warning-banner">⚠ BATTLEGROUND ACCESS WEB ⚠</div>
   
@@ -492,11 +493,13 @@
     </div>
     
     <div class="buttons-container">
-      <a class="pubg-button btn-ios load-in" href="http://pubgmk14-ios.kro.kr">iOS SITE</a>
+      <a class="pubg-button btn-ios load-in" href="http://pubgmk14-ios.kro.kr">AOS SITE</a>
       <a class="pubg-button btn-aos load-in" href="http://pubgmk14-aos.kro.kr">AOS SITE</a>
       <div class="pubg-button btn-calc load-in" onclick="window.open('http://pubgmk14-probability.kro.kr', '_blank')">PROBABILITY</div>
       <a class="pubg-button btn-tiktok load-in" href="https://www.tiktok.com/@pubginfo_kr?_t=ZS-8yDPN1MIZdJ&_r=1">TIKTOK</a>
       <a class="pubg-button btn-kakaotlak load-in" href="https://open.kakao.com/o/gxqkyr7f">KAKAO TLAK</a>
+      <a class="pubg-button btn-budget-ios load-in" href="pubgmk14-budget-ios.kro.kr">Budget IOS</a>
+      <a class="pubg-button btn-budget-aos load-in" href="pubgmk14-budget-aos.kro.kr">Budget AOS</a>
     </div>
   </div>
 </body>
