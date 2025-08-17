@@ -340,13 +340,13 @@ body::after {
 /* =======================
    Button Labels
 ======================= */
-.btn-ios::after { content: '⚡ UC IOS'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-aos::after { content: '🔥 UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-calc::after { content: '🎯 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-tiktok::after { content: '✔️ FOLLOW'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-kakaotlak::after { content: ' KAKAO TLAK'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-budget-ios::after { content: 'EMOJI_4 Budget IOS'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-budget-aos::after { content: 'EMOJI_5 Budget AOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-ios::after { content: '🫳 UC IOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-aos::after { content: '🫳 UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-budget-ios::after { content: '🫳 Budget IOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-budget-aos::after { content: '🫳 Budget AOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-calc::after { content: '🫳 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-tiktok::after { content: '🫳 FOLLOW'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-kakaotlak::after { content: '🫳 KAKAO TLAK'; font-size: 14px; display: block; margin-top: 5px; }
 
 /* =======================
    Corner UI
