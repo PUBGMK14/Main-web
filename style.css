@@ -348,6 +348,8 @@ body::after {
 .btn-naveracfe::after { content: '🫳 cafe'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-kakaotlak::after { content: '🫳 KAKAO TLAK'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-redeem::after { content: '🫳 REDEEM'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-applist::after { content: '🫳 APP LIST'; font-size: 14px; display: block; margin-top: 5px; }
+
 
 /* =======================
    Corner UI
