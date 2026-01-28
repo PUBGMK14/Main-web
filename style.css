@@ -395,70 +395,53 @@ body::after {
 @keyframes loadIn {
   to { opacity: 1; transform: translateY(0); }
 }
+
 /* =======================
-   Bottom Clock Style
+   Bottom Clock Style (가운데 정렬)
 ======================= */
 .footer-clock {
   width: 100%;
   display: flex;
-  justify-content: center;
-  padding: 40px 0; /* 아래쪽 여백 */
+  justify-content: center; /* 가로축 가운데 정렬 */
+  align-items: center;     /* 세로축 가운데 정렬 */
+  padding: 40px 0;
   margin-top: 50px;
+  position: relative;
+  z-index: 2;
 }
 
 .time-box {
-  background: rgba(0, 0, 0, 0.8); /* 어두운 배경 */
-  border: 1px solid #333; /* 사진과 유사한 어두운 테두리 */
-  border-radius: 8px;
-  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.85); /* 배경색 */
+  border: 1px solid #333;        /* 테두리 */
+  border-radius: 12px;
+  padding: 20px 40px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  align-items: center;           /* 내부 요소들 가운데 정렬 */
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  min-width: 320px;
 }
 
 .time-row {
   display: flex;
   align-items: center;
+  justify-content: center;       /* 텍스트 내용물 가운데 정렬 */
   gap: 12px;
   font-family: 'Orbitron', monospace;
+  width: 100%;
 }
 
-/* UTC 스타일 (약간 흐리게) */
-.utc-row {
-  color: #888; 
-  font-size: 16px;
-}
+.utc-row { color: #888; font-size: 15px; }
+.kst-row { color: #fff; font-size: 20px; font-weight: 700; }
+.kst-row .icon { color: #ffcc00; font-size: 18px; }
 
-/* KST 스타일 (밝고 굵게) */
-.kst-row {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.kst-row .icon {
-  color: #ffcc00; /* 시계 아이콘 포인트 컬러 */
-  font-size: 16px;
-}
-
-.label {
-  min-width: 45px;
-  display: inline-block;
-}
-
-.value {
-  letter-spacing: 1px;
-}
-
-/* 모바일 화면 최적화 */
+/* 모바일 대응 */
 @media (max-width: 768px) {
-  .time-box {
-    padding: 12px 20px;
-  }
+  .time-box { min-width: 280px; padding: 15px; }
   .kst-row { font-size: 16px; }
-  .utc-row { font-size: 14px; }
 }
+
 
 /* 💡 추가 요소 적용 방법
 1. HTML에서 새로운 요소에 class="load-in" 추가
