@@ -395,74 +395,72 @@ body::after {
 @keyframes loadIn {
   to { opacity: 1; transform: translateY(0); }
 }
-/* =======================
-   Bottom Clock Style
-======================= */
-.footer-clock {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 40px 0; /* 아래쪽 여백 */
-  margin-top: 50px;
-}
 
-.time-box {
-  background: rgba(0, 0, 0, 0.8); /* 어두운 배경 */
-  border: 1px solid #333; /* 사진과 유사한 어두운 테두리 */
-  border-radius: 8px;
-  padding: 15px 30px;
+/* =======================
+   Bottom Clock Style (원본 스타일 유지 + 중앙 정렬 수정)
+======================= */
+.time-display-container {
+  /* 박스 자체를 화면 중앙으로 */
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  align-items: center;      /* 내부 줄들을 가로 중앙으로 */
+  justify-content: center;
+  
+  /* 위치 및 간격 */
+  margin: 60px auto 40px auto; 
+  padding: 20px 40px;
+  width: fit-content;       /* 내용물에 맞게 너비 조절 */
+  min-width: 320px;
+  
+  /* 원본 디자인 느낌 유지 */
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #333;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  position: relative;
 }
 
 .time-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;  /* 텍스트 내용 중앙 정렬 */
+  gap: 15px;
+  width: 100%;
+  color: #888;              /* UTC 기본 색상 */
   font-family: 'Orbitron', monospace;
 }
 
-/* UTC 스타일 (약간 흐리게) */
-.utc-row {
-  color: #888; 
+.time-row.highlight {
+  color: #ffffff;           /* KST 강조 색상 (흰색) */
+  margin-top: 5px;
+}
+
+.time-label {
+  min-width: 45px;
+  font-weight: 900;
   font-size: 14px;
 }
 
-/* KST 스타일 (밝고 굵게) */
-.kst-row {
-  color: #fff;
+.time-value {
   font-size: 18px;
-  font-weight: 700;
-}
-
-.kst-row .icon {
-  color: #ffcc00; /* 시계 아이콘 포인트 컬러 */
-  font-size: 16px;
-}
-
-.label {
-  min-width: 45px;
-  display: inline-block;
-}
-
-.value {
   letter-spacing: 1px;
+}
+
+.time-icon {
+  color: #ffcc00;           /* 시계 아이콘 노란색 포인트 */
+  font-size: 16px;
 }
 
 /* 모바일 화면 최적화 */
 @media (max-width: 768px) {
-  .time-box {
-    padding: 12px 20px;
+  .time-display-container {
+    padding: 15px 25px;
+    min-width: 280px;
+    margin-top: 40px;
   }
-  .kst-row { font-size: 16px; }
-  .utc-row { font-size: 12px; }
+  .time-value {
+    font-size: 16px;
+  }
 }
-
-/* 💡 추가 요소 적용 방법
-1. HTML에서 새로운 요소에 class="load-in" 추가
-2. style 속성에 --i:숫자 지정 (기존 요소 다음 숫자로)
-   예: style="--i:8"
-3. CSS는 그대로 두면 자동으로 순차 애니메이션 적용
-*/
