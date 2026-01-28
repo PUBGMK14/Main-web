@@ -340,16 +340,19 @@ body::after {
 /* =======================
    Button Labels
 ======================= */
-.btn-ios::after { content: '🫳 UC IOS'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-aos::after { content: '🫳 UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-budget-ios::after { content: '🫳 Budget IOS'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-budget-aos::after { content: '🫳 Budget AOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-ios::after { content: '🫳 UC → 돈 IOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-aos::after { content: '🫳 UC → 돈 AOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-budget-ios::after { content: '🫳 돈 → UC IOS'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-budget-aos::after { content: '🫳 돈 → UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-calc::after { content: '🫳 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-uc-calendar::after { content: '🫳 CALENDAR'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-naveracfe::after { content: '🫳 cafe'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-kakaotlak::after { content: '🫳 KAKAO TLAK'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-redeem::after { content: '🫳 REDEEM'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-applist::after { content: '🫳 APP LIST'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-midasbuy::after { content: '🫳 midasbuy'; font-size: 14px; display: block; margin-top: 5px; }
+
+
 
 
 /* =======================
