@@ -427,7 +427,7 @@ body::after {
 /* UTC 스타일 (약간 흐리게) */
 .utc-row {
   color: #888; 
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* KST 스타일 (밝고 굵게) */
@@ -457,7 +457,7 @@ body::after {
     padding: 12px 20px;
   }
   .kst-row { font-size: 16px; }
-  .utc-row { font-size: 12px; }
+  .utc-row { font-size: 14px; }
 }
 
 /* 💡 추가 요소 적용 방법
