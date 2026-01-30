@@ -61,21 +61,25 @@
     </div>
   </div>
 
-  <footer class="footer-clock load-in" style="--i:8">
-  <div class="time-box">
-    <div class="time-row utc-row">
-      <span class="label">UTC</span>
-      <span id="utc-time" class="value">0000.00.00 00:00:00</span>
+  <footer class="footer-clock load-in" style="--i:8; margin-bottom: 20px;"> <div class="time-box">
+      <div class="time-row utc-row">
+        <span class="label">UTC</span>
+        <span id="utc-time" class="value">0000.00.00 00:00:00</span>
+      </div>
+      <div class="time-row kst-row">
+        <span class="icon">🕒</span>
+        <span class="label">KST</span>
+        <span id="kst-time" class="value">0000.00.00 00:00:00</span>
+      </div>
     </div>
-    <div class="time-row kst-row">
-      <span class="icon">🕒</span>
-      <span class="label">KST</span>
-      <span id="kst-time" class="value">0000.00.00 00:00:00</span>
+
+    <div style="margin-top: 15px; font-size: 0.8rem; color: #00ff41; opacity: 0.8; font-family: 'Orbitron', sans-serif;">
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span style="margin-right: 10px;">VIEWS: <span id="busuanzi_value_site_pv">--</span></span>
+      <span>VISITORS: <span id="busuanzi_value_site_uv">--</span></span>
     </div>
-  </div>
-</footer>
-
-
+  </footer>
+  
   <!-- Scripts -->
   <script src="./script.js"></script>
 </body>
