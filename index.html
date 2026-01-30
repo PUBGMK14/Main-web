@@ -75,16 +75,32 @@
       </div>
     </div>
 
-    <div style="margin-top: 15px; font-size: 0.85rem; color: #00ff41; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; display: flex; gap: 10px;">
-      <span style="border: 1px solid #00ff41; padding: 4px 10px; border-radius: 3px; display: flex; align-items: center; gap: 5px;">
-        TODAY: <img src="https://counter.adfree.eu/count/today.png?key=pubgmk14.kro.kr" alt="Today" style="height: 14px; filter: invert(48%) sepia(79%) saturate(2500%) hue-rotate(86deg) brightness(118%) contrast(119%);">
+    <div style="margin-top: 15px; font-size: 0.9rem; color: #00ff41; font-family: 'Orbitron', sans-serif; display: flex; gap: 15px;">
+      <span style="border: 1px solid #00ff41; padding: 3px 10px; border-radius: 4px;">
+        TODAY: <span id="today_count">1</span>
       </span>
-      <span style="border: 1px solid #00ff41; padding: 4px 10px; border-radius: 3px; display: flex; align-items: center; gap: 5px;">
-        TOTAL: <img src="https://counter.adfree.eu/count/total.png?key=pubgmk14.kro.kr" alt="Total" style="height: 14px; filter: invert(48%) sepia(79%) saturate(2500%) hue-rotate(86deg) brightness(118%) contrast(119%);">
+      <span style="border: 1px solid #00ff41; padding: 3px 10px; border-radius: 4px;">
+        TOTAL: <span id="busuanzi_value_site_uv">--</span>
       </span>
     </div>
   </footer>
 
   <script src="./script.js"></script>
+  
+  <script>
+    function updateTodayCount() {
+      const today = new Date().toDateString();
+      const lastVisit = localStorage.getItem('last_visit');
+      let count = parseInt(localStorage.getItem('today_user_count') || "1");
+
+      if (lastVisit !== today) {
+        // 날짜가 바뀌었을 때만 카운트 초기화 로직 (정밀 집계는 서버가 필요하지만 텍스트 표시용)
+        localStorage.setItem('last_visit', today);
+        count = 1; 
+      }
+      document.getElementById('today_count').innerText = count;
+    }
+    updateTodayCount();
+  </script>
 </body>
 </html>
