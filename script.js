@@ -5,7 +5,7 @@ import { getDatabase, ref, runTransaction, get } from "https://www.gstatic.com/f
 const firebaseConfig = {
   apiKey: "AIzaSyAIYpdLy7Wb2AUAnx9IGQumKj5Q-1Vg9Yc",
   authDomain: "main-web-1.firebaseapp.com",
-  projectId: "main-web-1",
+  projectId: "main-web-",
   storageBucket: "main-web-1.firebasestorage.app",
   messagingSenderId: "452463851103",
   appId: "1:452463851103:web:7655a681336c908c11cdea",
