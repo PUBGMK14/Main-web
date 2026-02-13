@@ -375,11 +375,52 @@ body::after {
    Responsive
 ======================= */
 @media (max-width: 768px) {
-  .logo-title { font-size: 48px; letter-spacing: 6px; }
-  .buttons-container { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
-  .pubg-button { padding: 20px 15px; font-size: 14px; }
-  .radar-container { width: 250px; height: 250px; top: -60px; }
-  .radar-sweep { height: 100px; }
+
+  .logo-container {
+    margin-top: 90px;   /* 위 공간 확보 */
+    margin-bottom: 40px;
+  }
+
+  .logo-title {
+    font-size: 48px;
+    letter-spacing: 6px;
+    margin-top: 10px;   /* 위쪽 여유 */
+    margin-bottom: 25px; /* 아래쪽 더 띄움 */
+  }
+
+  .logo-subtitle {
+    margin-top: 10px;
+  }
+
+  .radar-container {
+    width: 250px;
+    height: 250px;
+    top: -40px;   /* 기존 -60px → -40px로 완화 */
+  }
+
+  .radar-sweep {
+    height: 100px;
+  }
+
+  .buttons-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .pubg-button {
+    padding: 20px 15px;
+    font-size: 14px;
+  }
+}
+/* 패드 일껄?*/
+@media (min-width: 769px) and (max-width: 1200px) {
+
+  .logo-container {
+    margin-top: 120px;
+    margin-bottom: 70px;
+  }
+
 }
 
 /* =======================
