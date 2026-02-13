@@ -80,13 +80,12 @@ body::after {
 }
 
 /* =======================
-   Warning Banner
+   Warning Banner (상단 PUBG MOBILE INFO 박스)
 ======================= */
 .warning-banner {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; /* 겹침 방지를 위해 relative로 변경 */
+  display: inline-block;
+  margin-bottom: 40px; /* 아래 글자와의 간격 확보 */
   background: rgba(50, 50, 50, 0.2);
   border: 2px solid #444444;
   border-radius: 10px;
@@ -106,12 +105,12 @@ body::after {
 }
 
 /* =======================
-   Logo
+   Logo (PUBG INFO 타이틀 섹션)
 ======================= */
 .logo-container {
   text-align: center;
-  margin-bottom: 60px;
-  margin-top: 40px;
+  margin-top: 60px;
+  margin-bottom: 80px; /* 아래 버튼과의 간격 확보 */
   position: relative;
   width: 100%;
   display: flex;
@@ -184,6 +183,7 @@ body::after {
   height: 350px;
   border-radius: 50%;
   opacity: 0.8;
+  z-index: -1; /* 글자 뒤로 배치 */
 }
 
 .radar-ring {
@@ -302,20 +302,7 @@ body::after {
   transition: left 0.6s ease;
 }
 
-.pubg-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
 .pubg-button:hover::before { left: 100%; }
-.pubg-button:hover::after { opacity: 1; }
 
 .pubg-button:hover {
   background: linear-gradient(145deg,
@@ -330,13 +317,6 @@ body::after {
   border-color: rgba(150, 150, 150, 0.9);
 }
 
-.pubg-button:active {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow:
-    0 10px 20px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(100, 100, 100, 0.4);
-}
-
 /* =======================
    Button Labels
 ======================= */
@@ -344,16 +324,6 @@ body::after {
 .btn-aos::after { content: '🫳 UC → 돈 AOS'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-budget-ios::after { content: '🫳 돈 → UC IOS'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-budget-aos::after { content: '🫳 돈 → UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-calc::after { content: '🫳 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-uc-calendar::after { content: '🫳 CALENDAR'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-naveracfe::after { content: '🫳 cafe'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-kakaotlak::after { content: '🫳 KAKAO TLAK'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-redeem::after { content: '🫳 REDEEM'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-applist::after { content: '🫳 APP LIST'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-midasbuy::after { content: '🫳 midasbuy'; font-size: 14px; display: block; margin-top: 5px; }
-
-
-
 
 /* =======================
    Corner UI
@@ -372,34 +342,30 @@ body::after {
 .corner-ui.bottom-right { bottom: 20px; right: 20px; }
 
 /* =======================
-   Responsive
+   Responsive (모바일 & 패드 수정)
 ======================= */
 @media (max-width: 768px) {
-
   .logo-container {
-    margin-top: 90px;   /* 위 공간 확보 */
-    margin-bottom: 40px;
+    margin-top: 80px;   /* 폰 상단 여유 확보 */
+    margin-bottom: 50px;
+  }
+
+  .warning-banner {
+    margin-bottom: 30px; /* 글자 겹침 해결을 위한 마진 */
+    font-size: 11px;
+    padding: 8px 16px;
   }
 
   .logo-title {
     font-size: 48px;
     letter-spacing: 6px;
-    margin-top: 10px;   /* 위쪽 여유 */
-    margin-bottom: 25px; /* 아래쪽 더 띄움 */
-  }
-
-  .logo-subtitle {
-    margin-top: 10px;
+    margin-bottom: 25px;
   }
 
   .radar-container {
     width: 250px;
     height: 250px;
-    top: -40px;   /* 기존 -60px → -40px로 완화 */
-  }
-
-  .radar-sweep {
-    height: 100px;
+    top: -40px;
   }
 
   .buttons-container {
@@ -407,50 +373,27 @@ body::after {
     gap: 20px;
     padding: 0 10px;
   }
-
-  .pubg-button {
-    padding: 20px 15px;
-    font-size: 14px;
-  }
 }
-/* 패드 일껄?*/
-@media (min-width: 769px) and (max-width: 1200px) {
 
+@media (min-width: 769px) and (max-width: 1200px) {
+  /* 패드 환경: 위아래를 더 시원하게 띄움 */
   .logo-container {
     margin-top: 120px;
-    margin-bottom: 70px;
+    margin-bottom: 100px;
   }
 
+  .warning-banner {
+    margin-bottom: 50px;
+  }
 }
 
 /* =======================
-   Load-in Animation
-======================= */
-.load-in {
-  animation: loadIn 1.2s ease-out forwards;
-  opacity: 0;
-  transform: translateY(50px);
-  animation-delay: calc(var(--i) * 0.2s + 0.1s); /* 순서별 딜레이 */
-}
-
-@keyframes loadIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 💡 추가 요소 적용 방법
-1. HTML에서 새로운 요소에 class="load-in" 추가
-2. style 속성에 --i:숫자 지정 (기존 요소 다음 숫자로)
-   예: style="--i:8"
-3. CSS는 그대로 두면 자동으로 순차 애니메이션 적용
-*/
-
-/* =======================
-   Bottom Clock Style (가운데 정렬 버전)
+   Footer Clock & Counters
 ======================= */
 .footer-clock {
   width: 100%;
   display: flex;
-  justify-content: center; /* 가로 가운데 정렬 */
+  flex-direction: column;
   align-items: center;
   padding: 40px 0;
   margin-top: 50px;
@@ -460,63 +403,26 @@ body::after {
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid #333;
   border-radius: 12px;
-  padding: 20px 40px; /* 안쪽 여백을 넓혀서 사진 느낌 강조 */
+  padding: 20px 40px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 박스 내부 요소들 가운데 정렬 */
+  align-items: center;
   gap: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  min-width: 320px; /* 박스 최소 너비 */
+  min-width: 320px;
 }
 
 .time-row {
   display: flex;
   align-items: center;
-  justify-content: center; /* 텍스트 정렬 */
+  justify-content: center;
   gap: 12px;
   font-family: 'Orbitron', monospace;
   width: 100%;
 }
 
-/* UTC 스타일 */
-.utc-row {
-  color: #888; 
-  font-size: 15px;
-  letter-spacing: 1px;
-}
-
-/* KST 스타일 */
-.kst-row {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-}
-
-.kst-row .icon {
-  color: #ffcc00;
-  font-size: 18px;
-  margin-right: 4px;
-}
-
-.label {
-  font-weight: 900;
-  min-width: 50px;
-  text-align: left;
-}
-
-/* 모바일 대응 */
-@media (max-width: 768px) {
-  .time-box {
-    padding: 15px 25px;
-    min-width: 280px;
-  }
-  .kst-row { font-size: 16px; }
-  .utc-row { font-size: 13px; }
-}
-
-
-/* 기존 코드 하단에 추가하거나 해당 부분을 수정하세요 */
+.utc-row { color: #888; font-size: 15px; }
+.kst-row { color: #fff; font-size: 20px; font-weight: 700; }
 
 .counter-container {
   margin-top: 15px;
@@ -531,18 +437,7 @@ body::after {
   font-size: 0.85rem;
   color: #00ff41;
   font-family: 'Orbitron', sans-serif;
-  letter-spacing: 1px;
   text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
   background: rgba(0, 255, 65, 0.05);
   backdrop-filter: blur(5px);
-}
-
-/* 기존 footer-clock의 margin 및 레이아웃 유지 */
-.footer-clock {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 0;
-  margin-top: 50px;
 }
