@@ -1,20 +1,3 @@
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-// [긴급] DB를 강제로 깨끗하게 밀어버리는 코드
-const cleanUp = async () => {
-    const db = getDatabase();
-    await set(ref(db, '/'), {  // DB 루트를 통째로 덮어씌움
-        stats: {
-            totalVisitors: 31, // (4+8+14+5) 이전 데이터 합계 대략 넣어줌
-            daily: {
-                "2026-02-13": 1 // 오늘 데이터 1부터 다시 시작
-            }
-        }
-    });
-    alert("오염된 데이터가 삭제되었습니다! 이제 렉이 없을 거예요.");
-};
-cleanUp();
-
 // Firebase 라이브러리 불러오기
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, runTransaction, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
@@ -67,7 +50,7 @@ const dailyKey = `hasVisited_daily_${todayStr}`; // 오늘 방문했는지 기�
 
 if (!localStorage.getItem(dailyKey)) {
     // 오늘 처음 들어온 사람이라면 DB 숫자 +1
-    runTransaction(dailyRef, (current) => (current || 0) + 1).then(res => {
+    runTransaction(dailyRef, (current) => (Number(current) || 0) + 1).then(res => {
         if(dailyEl) dailyEl.innerText = res.snapshot.val();
         localStorage.setItem(dailyKey, 'true'); // 오늘 방문 완료 기록
     });
@@ -84,7 +67,7 @@ const totalKey = 'hasVisited_total_forever'; // 이 사이트에 평생 한 번�
 
 if (!localStorage.getItem(totalKey)) {
     // 이 사이트 자체가 처음인 사람이라면 DB 숫자 +1
-    runTransaction(totalRef, (current) => (current || 0) + 1).then(res => {
+    runTransaction(totalRef, (current) => (Number(current) || 0) + 1).then(res => {
         if(totalEl) totalEl.innerText = res.snapshot.val();
         localStorage.setItem(totalKey, 'true'); // 평생 방문 완료 기록
     });
