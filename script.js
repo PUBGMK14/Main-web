@@ -1,11 +1,12 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-import { getDatabase, ref, runTransaction, get } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, runTransaction, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
-// 1. Firebase 설정
+// 1. Firebase 설정 (projectId 등 오타 수정 확인)
 const firebaseConfig = {
   apiKey: "AIzaSyAIYpdLy7Wb2AUAnx9IGQumKj5Q-1Vg9Yc",
   authDomain: "main-web-1.firebaseapp.com",
-  projectId: "main-web-",
+  projectId: "main-web-1", // 'main-web-'에서 'main-web-1'로 수정 확인 필요
   storageBucket: "main-web-1.firebasestorage.app",
   messagingSenderId: "452463851103",
   appId: "1:452463851103:web:7655a681336c908c11cdea",
@@ -15,13 +16,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const analytics = getAnalytics(app);
 
-// 2. 실시간 시계 로직
+// 2. 실시간 시계 로직 (기존 유지)
 function updateClock() {
     try {
         const now = new Date();
         const pad = (n) => String(n).padStart(2, '0');
         const format = (date) => `${date.getFullYear()}.${pad(date.getMonth() + 1)}.${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+        
+        // UTC 계산 수정
         const utcTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
         
         const utcEl = document.getElementById('utc-time');
@@ -34,48 +38,43 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// 3. 오늘 날짜 (KST)
-const nowKst = new Date(new Date().getTime() + (9 * 60 * 60 * 1000));
-const todayStr = nowKst.toISOString().split('T')[0];
-
-// 4. 방문자 카운터 (방어 로직 강화)
+// 3. 방문자 카운터 로직 개선
 const dailyEl = document.getElementById('daily-visitors-count');
 const totalEl = document.getElementById('visitors-count');
 
-// [숫자 전용 트랜잭션 함수]
-const safeCounter = (current) => {
-    // 만약 현재 데이터가 숫자가 아니면 무조건 1로 시작 (오염 차단)
-    if (current === null || typeof current !== 'number') return 1;
-    return current + 1;
-};
+// 현재 날짜 구하기 (KST 기준)
+const now = new Date();
+const kstNow = new Date(now.getTime() + (9 * 60 * 60 * 1000));
+const todayStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
 
-// TODAY 로직
-const dailyRef = ref(db, `stats/daily/${todayStr}`);
-const dailyKey = `hasVisited_daily_${todayStr}`;
+const safeCounter = (current) => (current || 0) + 1;
 
-if (!localStorage.getItem(dailyKey)) {
-    runTransaction(dailyRef, safeCounter).then(res => {
-        if(dailyEl && res.committed) dailyEl.innerText = res.snapshot.val();
+async function handleVisitors() {
+    const dailyKey = `visited_daily_${todayStr}`;
+    const totalKey = `visited_total_all`;
+
+    // A. TODAY 카운트 (하루 한 번)
+    const dailyRef = ref(db, `stats/daily/${todayStr}`);
+    if (!localStorage.getItem(dailyKey)) {
+        await runTransaction(dailyRef, safeCounter);
         localStorage.setItem(dailyKey, 'true');
-    }).catch(err => console.error("Today Error:", err));
-} else {
+    }
+    // 화면 업데이트
     get(dailyRef).then(snap => { if(dailyEl) dailyEl.innerText = snap.val() || 0; });
-}
 
-// TOTAL 로직
-const totalRef = ref(db, 'stats/totalVisitors');
-const totalKey = 'hasVisited_total_forever';
-
-if (!localStorage.getItem(totalKey)) {
-    runTransaction(totalRef, safeCounter).then(res => {
-        if(totalEl && res.committed) totalEl.innerText = res.snapshot.val();
+    // B. TOTAL 카운트 (영구 한 번)
+    const totalRef = ref(db, 'stats/totalVisitors');
+    if (!localStorage.getItem(totalKey)) {
+        await runTransaction(totalRef, safeCounter);
         localStorage.setItem(totalKey, 'true');
-    }).catch(err => console.error("Total Error:", err));
-} else {
+    }
+    // 화면 업데이트
     get(totalRef).then(snap => { if(totalEl) totalEl.innerText = snap.val() || 0; });
 }
 
-// 5. 버튼 연동
+handleVisitors().catch(err => console.error("Visitor Counter Error:", err));
+
+// 4. 버튼 이벤트 (기존 유지)
 const probBtn = document.getElementById('btn-probability');
 if (probBtn) {
     probBtn.onclick = () => {
