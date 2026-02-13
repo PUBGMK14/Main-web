@@ -3,8 +3,8 @@
  * 변경사항: 새로운 DB 주소 연결 및 데이터 오염 방지 로직 강화
  */
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, runTransaction, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getDatabase, ref, runTransaction, get } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
 
 // 1. 새로운 Firebase 설정 (main-web-1 프로젝트 정보 적용)
 const firebaseConfig = {
