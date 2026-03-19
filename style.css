@@ -1,4 +1,70 @@
 /* =======================
+   CSS Variables (테마)
+======================= */
+:root {
+  /* 다크 모드 기본값 */
+  --bg-primary: #000000;
+  --bg-secondary: #050505;
+  --bg-tertiary: #0f0f0f;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.7);
+  --border-color: rgba(100,100,100,0.8);
+  --btn-bg-start: rgba(80,80,80,0.9);
+  --btn-bg-mid: rgba(60,60,60,0.9);
+  --btn-bg-end: rgba(40,40,40,0.9);
+  --btn-hover-start: rgba(120,120,120,0.95);
+  --btn-hover-mid: rgba(100,100,100,0.95);
+  --btn-hover-end: rgba(80,80,80,0.95);
+  --btn-shadow-color: rgba(100,100,100,0.3);
+  --btn-hover-glow: rgba(150,150,150,0.6);
+  --radar-color: rgba(255,255,255,0.4);
+  --scanline-color: rgba(255,255,255,0.03);
+  --hex-opacity: 0.1;
+  --time-box-bg: rgba(0,0,0,0.8);
+  --time-box-border: #333;
+  --notice-bg: rgba(10,10,10,0.85);
+  --notice-border: rgba(80,80,80,0.6);
+  --notice-item-bg: rgba(255,255,255,0.03);
+  --notice-item-border: rgba(255,255,255,0.08);
+  --toggle-bg: rgba(40,40,40,0.9);
+  --toggle-border: rgba(120,120,120,0.6);
+  --body-grad1: rgba(50,50,50,0.3);
+  --body-grad2: rgba(40,40,40,0.4);
+  --body-grad3: rgba(50,50,50,0.2);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f0f0f0;
+  --bg-secondary: #e8e8e8;
+  --bg-tertiary: #d8d8d8;
+  --text-primary: #111111;
+  --text-secondary: rgba(0,0,0,0.6);
+  --border-color: rgba(100,100,100,0.5);
+  --btn-bg-start: rgba(200,200,200,0.95);
+  --btn-bg-mid: rgba(180,180,180,0.95);
+  --btn-bg-end: rgba(160,160,160,0.95);
+  --btn-hover-start: rgba(220,220,220,1);
+  --btn-hover-mid: rgba(200,200,200,1);
+  --btn-hover-end: rgba(180,180,180,1);
+  --btn-shadow-color: rgba(0,0,0,0.15);
+  --btn-hover-glow: rgba(100,100,100,0.4);
+  --radar-color: rgba(0,0,0,0.3);
+  --scanline-color: rgba(0,0,0,0.02);
+  --hex-opacity: 0.05;
+  --time-box-bg: rgba(255,255,255,0.85);
+  --time-box-border: #cccccc;
+  --notice-bg: rgba(255,255,255,0.9);
+  --notice-border: rgba(0,0,0,0.15);
+  --notice-item-bg: rgba(0,0,0,0.03);
+  --notice-item-border: rgba(0,0,0,0.1);
+  --toggle-bg: rgba(230,230,230,0.95);
+  --toggle-border: rgba(100,100,100,0.5);
+  --body-grad1: rgba(200,200,200,0.3);
+  --body-grad2: rgba(180,180,180,0.2);
+  --body-grad3: rgba(200,200,200,0.15);
+}
+
+/* =======================
    Global Reset
 ======================= */
 * {
@@ -9,14 +75,16 @@
 
 body {
   background:
-    radial-gradient(circle at 20% 50%, rgba(50, 50, 50, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(40, 40, 40, 0.4) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(50, 50, 50, 0.2) 0%, transparent 50%),
-    linear-gradient(135deg, #000000 0%, #050505 30%, #0f0f0f 60%, #050505 100%);
+    radial-gradient(circle at 20% 50%, var(--body-grad1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--body-grad2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, var(--body-grad3) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 30%, var(--bg-tertiary) 60%, var(--bg-secondary) 100%);
   min-height: 100vh;
   font-family: 'Orbitron', monospace;
   overflow-x: hidden;
   position: relative;
+  transition: background 0.4s ease, color 0.4s ease;
+  color: var(--text-primary);
 }
 
 /* =======================
@@ -33,8 +101,8 @@ body::before {
     90deg,
     transparent,
     transparent 2px,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(255, 255, 255, 0.03) 4px
+    var(--scanline-color) 2px,
+    var(--scanline-color) 4px
   );
   pointer-events: none;
   z-index: 1;
@@ -51,16 +119,60 @@ body::after {
   width: 100%;
   height: 100%;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.1;
+  opacity: var(--hex-opacity);
   animation: hexMove 30s linear infinite;
   pointer-events: none;
   z-index: 0;
+  transition: opacity 0.4s ease;
 }
 
 @keyframes hexMove {
   0% { transform: translate(0, 0); }
   100% { transform: translate(60px, 60px); }
 }
+
+/* =======================
+   Dark / Light Toggle
+======================= */
+.theme-toggle {
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  z-index: 100;
+  background: var(--toggle-bg);
+  border: 2px solid var(--toggle-border);
+  border-radius: 30px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  border-color: var(--text-secondary);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.toggle-icon {
+  font-size: 14px;
+  transition: transform 0.4s ease;
+}
+
+.theme-toggle:hover .toggle-icon {
+  transform: rotate(20deg);
+}
+
+[data-theme="light"] .toggle-icon { content: '🌙'; }
 
 /* =======================
    Container
@@ -91,7 +203,7 @@ body::after {
   border: 2px solid #444444;
   border-radius: 10px;
   padding: 10px 20px;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
@@ -101,8 +213,8 @@ body::after {
 }
 
 @keyframes warningPulse {
-  0%, 100% { opacity: 0.7; box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
-  50% { opacity: 1; box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+  0%, 100% { opacity: 0.7; box-shadow: 0 0 5px rgba(255,255,255,0.3); }
+  50% { opacity: 1; box-shadow: 0 0 20px rgba(255,255,255,0.6); }
 }
 
 /* =======================
@@ -121,16 +233,16 @@ body::after {
 }
 
 .logo-title {
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 72px;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 12px;
   text-shadow:
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.6),
-    0 0 40px rgba(255, 255, 255, 0.4),
-    0 0 80px rgba(255, 255, 255, 0.2);
+    0 0 10px rgba(255,255,255,0.8),
+    0 0 20px rgba(255,255,255,0.6),
+    0 0 40px rgba(255,255,255,0.4),
+    0 0 80px rgba(255,255,255,0.2);
   margin-bottom: 15px;
   position: relative;
   animation: titleGlitch 4s ease-in-out infinite;
@@ -163,13 +275,13 @@ body::after {
 }
 
 .logo-subtitle {
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0.9;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
 /* =======================
@@ -189,13 +301,13 @@ body::after {
 .radar-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--radar-color);
   animation: radarPulse 4s ease-in-out infinite;
 }
 
 .radar-ring:nth-child(1) { width: 100%; height: 100%; top: 0; left: 0; animation-delay: 0s; }
-.radar-ring:nth-child(2) { width: 70%; height: 70%; top: 15%; left: 15%; animation-delay: 1s; border-color: rgba(255, 255, 255, 0.5); }
-.radar-ring:nth-child(3) { width: 40%; height: 40%; top: 30%; left: 30%; animation-delay: 2s; border-color: rgba(255, 255, 255, 0.6); }
+.radar-ring:nth-child(2) { width: 70%; height: 70%; top: 15%; left: 15%; animation-delay: 1s; }
+.radar-ring:nth-child(3) { width: 40%; height: 40%; top: 30%; left: 30%; animation-delay: 2s; }
 
 .radar-sweep {
   position: absolute;
@@ -204,30 +316,14 @@ body::after {
   width: 3px;
   height: 175px;
   background: linear-gradient(to bottom,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.7) 40%,
-    rgba(255, 255, 255, 0.4) 70%,
+    rgba(255,255,255,0.9) 0%,
+    rgba(255,255,255,0.7) 40%,
+    rgba(255,255,255,0.4) 70%,
     transparent 100%);
   transform-origin: bottom center;
   animation: radarSweep 5s linear infinite;
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.radar-sweep::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -10px;
-  width: 23px;
-  height: 175px;
-  background: conic-gradient(from 0deg,
-    transparent 0deg,
-    rgba(255, 255, 255, 0.1) 10deg,
-    rgba(255, 255, 255, 0.3) 20deg,
-    rgba(255, 255, 255, 0.1) 30deg,
-    transparent 40deg);
-  border-radius: 0 175px 175px 0;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
 @keyframes radarSweep {
@@ -237,7 +333,7 @@ body::after {
 
 @keyframes radarPulse {
   0%, 100% { opacity: 0.3; transform: scale(1); border-width: 1px; }
-  50% { opacity: 0.8; transform: scale(1.05); border-width: 2px; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+  50% { opacity: 0.8; transform: scale(1.05); border-width: 2px; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
 }
 
 /* =======================
@@ -256,11 +352,11 @@ body::after {
 
 .pubg-button {
   background: linear-gradient(145deg,
-    rgba(80, 80, 80, 0.9) 0%,
-    rgba(60, 60, 60, 0.9) 50%,
-    rgba(40, 40, 40, 0.9) 100%);
-  color: #ffffff;
-  border: 3px solid rgba(100, 100, 100, 0.8);
+    var(--btn-bg-start) 0%,
+    var(--btn-bg-mid) 50%,
+    var(--btn-bg-end) 100%);
+  color: var(--text-primary);
+  border: 3px solid var(--border-color);
   padding: 25px 20px;
   font-size: 16px;
   font-weight: 900;
@@ -276,9 +372,9 @@ body::after {
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(100, 100, 100, 0.3);
+    0 10px 30px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 0 20px var(--btn-shadow-color);
   width: 100%;
   max-width: 350px;
   justify-self: center;
@@ -297,7 +393,7 @@ body::after {
   height: 100%;
   background: linear-gradient(90deg,
     transparent,
-    rgba(255, 255, 255, 0.4),
+    rgba(255,255,255,0.4),
     transparent);
   transition: left 0.6s ease;
 }
@@ -309,7 +405,7 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -319,22 +415,19 @@ body::after {
 
 .pubg-button:hover {
   background: linear-gradient(145deg,
-    rgba(120, 120, 120, 0.95) 0%,
-    rgba(100, 100, 100, 0.95) 50%,
-    rgba(80, 80, 80, 0.95) 100%);
+    var(--btn-hover-start) 0%,
+    var(--btn-hover-mid) 50%,
+    var(--btn-hover-end) 100%);
   transform: translateY(-5px) scale(1.05);
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.7),
-    0 0 50px rgba(150, 150, 150, 0.6),
-    inset 0 0 20px rgba(255, 255, 255, 0.2);
-  border-color: rgba(150, 150, 150, 0.9);
+    0 20px 40px rgba(0,0,0,0.7),
+    0 0 50px var(--btn-hover-glow),
+    inset 0 0 20px rgba(255,255,255,0.2);
+  border-color: rgba(150,150,150,0.9);
 }
 
 .pubg-button:active {
   transform: translateY(-2px) scale(1.02);
-  box-shadow:
-    0 10px 20px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(100, 100, 100, 0.4);
 }
 
 /* =======================
@@ -346,14 +439,117 @@ body::after {
 .btn-budget-aos::after { content: '🫳 돈 → UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-calc::after { content: '🫳 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-uc-calendar::after { content: '🫳 CALENDAR'; font-size: 14px; display: block; margin-top: 5px; }
-.btn-naveracfe::after { content: '🫳 cafe'; font-size: 14px; display: block; margin-top: 5px; }
+.btn-navercafe::after { content: '🫳 cafe'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-kakaotlak::after { content: '🫳 KAKAO TLAK'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-redeem::after { content: '🫳 REDEEM'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-applist::after { content: '🫳 APP LIST'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-midasbuy::after { content: '🫳 midasbuy'; font-size: 14px; display: block; margin-top: 5px; }
 
+/* =======================
+   Notice Banner
+======================= */
+.notice-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px 20px 10px;
+  padding: 0 20px;
+}
 
+.notice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
 
+.notice-badge {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px 14px;
+  background: var(--notice-item-bg);
+  backdrop-filter: blur(8px);
+  text-transform: uppercase;
+}
+
+.notice-date {
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.notice-list {
+  background: var(--notice-bg);
+  border: 1px solid var(--notice-border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+
+.notice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--notice-item-bg);
+  border: 1px solid var(--notice-item-border);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.notice-item:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateX(4px);
+}
+
+.notice-important {
+  border-left: 3px solid #ffcc00 !important;
+}
+
+.notice-tag {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.tag-event {
+  background: rgba(255, 200, 0, 0.2);
+  color: #ffcc00;
+  border: 1px solid rgba(255, 200, 0, 0.4);
+}
+
+.tag-update {
+  background: rgba(0, 200, 255, 0.15);
+  color: #00ccff;
+  border: 1px solid rgba(0, 200, 255, 0.3);
+}
+
+.tag-info {
+  background: rgba(180, 180, 180, 0.15);
+  color: #aaaaaa;
+  border: 1px solid rgba(180, 180, 180, 0.3);
+}
+
+.notice-text {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  font-family: 'Orbitron', monospace;
+}
 
 /* =======================
    Corner UI
@@ -361,7 +557,7 @@ body::after {
 .corner-ui {
   position: fixed;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
   font-weight: bold;
   z-index: 10;
 }
@@ -372,81 +568,48 @@ body::after {
 .corner-ui.bottom-right { bottom: 20px; right: 20px; }
 
 /* =======================
-   Responsive
-======================= */
-@media (max-width: 768px) {
-  .logo-title { font-size: 48px; letter-spacing: 6px; }
-  .buttons-container { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
-  .pubg-button { padding: 20px 15px; font-size: 14px; }
-  .radar-container { width: 250px; height: 250px; top: -60px; }
-  .radar-sweep { height: 100px; }
-}
-
-/* =======================
-   Load-in Animation
-======================= */
-.load-in {
-  animation: loadIn 1.2s ease-out forwards;
-  opacity: 0;
-  transform: translateY(50px);
-  animation-delay: calc(var(--i) * 0.2s + 0.1s); /* 순서별 딜레이 */
-}
-
-@keyframes loadIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 💡 추가 요소 적용 방법
-1. HTML에서 새로운 요소에 class="load-in" 추가
-2. style 속성에 --i:숫자 지정 (기존 요소 다음 숫자로)
-   예: style="--i:8"
-3. CSS는 그대로 두면 자동으로 순차 애니메이션 적용
-*/
-
-/* =======================
-   Bottom Clock Style (가운데 정렬 버전)
+   Bottom Clock
 ======================= */
 .footer-clock {
   width: 100%;
   display: flex;
-  justify-content: center; /* 가로 가운데 정렬 */
+  flex-direction: column;
   align-items: center;
   padding: 40px 0;
   margin-top: 50px;
 }
 
 .time-box {
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid #333;
+  background: var(--time-box-bg);
+  border: 1px solid var(--time-box-border);
   border-radius: 12px;
-  padding: 20px 40px; /* 안쪽 여백을 넓혀서 사진 느낌 강조 */
+  padding: 20px 40px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 박스 내부 요소들 가운데 정렬 */
+  align-items: center;
   gap: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  min-width: 320px; /* 박스 최소 너비 */
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  min-width: 320px;
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .time-row {
   display: flex;
   align-items: center;
-  justify-content: center; /* 텍스트 정렬 */
+  justify-content: center;
   gap: 12px;
   font-family: 'Orbitron', monospace;
   width: 100%;
 }
 
-/* UTC 스타일 */
 .utc-row {
-  color: #888; 
+  color: #888;
   font-size: 15px;
   letter-spacing: 1px;
 }
 
-/* KST 스타일 */
 .kst-row {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -464,44 +627,54 @@ body::after {
   text-align: left;
 }
 
-/* 모바일 대응 */
+/* =======================
+   Load-in Animation
+======================= */
+.load-in {
+  animation: loadIn 1.2s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+  animation-delay: calc(var(--i) * 0.2s + 0.1s);
+}
+
+@keyframes loadIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================
+   Notice Link Style
+======================= */
+.notice-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.notice-arrow {
+  margin-left: auto;
+  font-size: 20px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.notice-link:hover .notice-arrow {
+  transform: translateX(3px);
+}
+
+/* =======================
+   Responsive
+======================= */
 @media (max-width: 768px) {
-  .time-box {
-    padding: 15px 25px;
-    min-width: 280px;
-  }
+  .logo-title { font-size: 48px; letter-spacing: 6px; }
+  .buttons-container { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
+  .pubg-button { padding: 20px 15px; font-size: 14px; }
+  .radar-container { width: 250px; height: 250px; top: -60px; }
+  .radar-sweep { height: 100px; }
+  .time-box { padding: 15px 25px; min-width: 280px; }
   .kst-row { font-size: 16px; }
   .utc-row { font-size: 13px; }
-}
-
-
-/* 기존 코드 하단에 추가하거나 해당 부분을 수정하세요 */
-
-.counter-container {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-}
-
-.counter-item {
-  border: 1px solid #00ff41;
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  color: #00ff41;
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
-  background: rgba(0, 255, 65, 0.05);
-  backdrop-filter: blur(5px);
-}
-
-/* 기존 footer-clock의 margin 및 레이아웃 유지 */
-.footer-clock {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 0;
-  margin-top: 50px;
+  /* 모바일: 코너 UI(SERVERS: KR/JP) 아래에 위치해서 안 겹치게 */
+  .theme-toggle { right: 10px; top: 50px; padding: 6px 12px; font-size: 10px; }
+  .notice-section { margin: 40px 10px 10px; padding: 0 10px; }
+  .notice-text { font-size: 11px; }
 }
