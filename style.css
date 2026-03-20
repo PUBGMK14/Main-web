@@ -433,7 +433,6 @@ body::after {
 /* =======================
    Button Labels
 ======================= */
-
 .btn-uc-calc::after { content: '🫳 UC CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
 /*
 .btn-ios::after { content: '🫳 UC → 돈 IOS'; font-size: 14px; display: block; margin-top: 5px; }
@@ -483,6 +482,10 @@ body::after {
   font-size: 11px;
   color: var(--text-secondary);
   letter-spacing: 1px;
+  display: block;
+  text-align: right;
+  margin-top: 8px;
+  padding-right: 4px;
 }
 
 .notice-list {
