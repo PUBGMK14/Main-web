@@ -433,10 +433,14 @@ body::after {
 /* =======================
    Button Labels
 ======================= */
+
+.btn-uc-calc::after { content: '🫳 UC CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
+/*
 .btn-ios::after { content: '🫳 UC → 돈 IOS'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-aos::after { content: '🫳 UC → 돈 AOS'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-budget-ios::after { content: '🫳 돈 → UC IOS'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-budget-aos::after { content: '🫳 돈 → UC AOS'; font-size: 14px; display: block; margin-top: 5px; }
+*/
 .btn-calc::after { content: '🫳 CALCULATOR'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-uc-calendar::after { content: '🫳 CALENDAR'; font-size: 14px; display: block; margin-top: 5px; }
 .btn-navercafe::after { content: '🫳 cafe'; font-size: 14px; display: block; margin-top: 5px; }
